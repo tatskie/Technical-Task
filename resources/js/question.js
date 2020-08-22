@@ -44,10 +44,9 @@ jQuery(document).ready(function($){
                 var question = '<tr id="question' + data.id + '"><td scope="row">' + data.id + '</td><td>' + data.question + '</td>';
                 question += '<td>' + data.points + '</td>';
                 question += '<td>' + data.category_id + '</td>';
-                question += '<button type="button" class="btn btn-outline-success btn-sm" id="choicesView" data-id="'+ data.id +'">View Options</button>';
-                question += '<td><button type="button" class="btn btn-outline-info btn-sm" id="examView" data-id="'+ data.id +'">view</button>';
-                question += '<button type="button" class="btn btn-outline-secondary btn-sm" id="examEdit" data-id="'+ data.id +'">Edit</button>';
-                question += '<button type="button" class="btn btn-outline-danger btn-sm" id="examDelete" data-id="'+ data.id +'">Delete</button></td>';
+                question += '<td><button type="button" class="btn btn-outline-info btn-sm" id="choicesView" data-id="'+ data.id +'">View Options</button></td>';
+                question += '<td><button type="button" class="btn btn-outline-secondary btn-sm" id="examEdit" data-id="'+ data.id +'">Edit</button>';
+                question += '<button type="button" class="btn btn-outline-danger btn-sm" id="examDelete" data-id="'+ data.id +'">Delete</button></td></tr>';
                 
                 if (state == "add") {
                     jQuery('#question-lists').append(question);
@@ -103,10 +102,9 @@ jQuery(document).ready(function($){
                 var question = '<tr id="question' + data.id + '"><td scope="row">' + data.id + '</td><td>' + data.question + '</td>';
                 question += '<td>' + data.points + '</td>';
                 question += '<td>' + data.category_id + '</td>';
-                question += '<button type="button" class="btn btn-outline-success btn-sm" id="choicesView" data-id="'+ data.id +'">View Options</button>';
-                question += '<td><button type="button" class="btn btn-outline-info btn-sm" id="questionView" data-id="'+ data.id +'">view</button>';
-                question += '<button type="button" class="btn btn-outline-secondary btn-sm" id="questionEdit" data-id="'+ data.id +'">Edit</button>';
-                question += '<button type="button" class="btn btn-outline-danger btn-sm" id="questionDelete" data-id="'+ data.id +'">Delete</button></td>';
+                question += '<td><button type="button" class="btn btn-outline-info btn-sm" id="choicesView" data-id="'+ data.id +'">View Options</button></td>';
+                question += '<td><button type="button" class="btn btn-outline-secondary btn-sm" id="questionEdit" data-id="'+ data.id +'">Edit</button>';
+                question += '<button type="button" class="btn btn-outline-danger btn-sm" id="questionDelete" data-id="'+ data.id +'">Delete</button></td></tr>';
                 if (state == "add") {
                     jQuery('#question-lists').append(question);
                 } else {
@@ -216,11 +214,4 @@ jQuery(document).ready(function($){
             jQuery("#question-delete").text("Are you sure you want to delete "+ data.question +"?")
         ));
     });
-
-    // view exam
-    $(document).on( "click" ,"#examView", function() {
-        // console.log('Hit me');
-        window.location.href ="/exam/"+$(this).data("id")+"/edit";
-    });
-
 });

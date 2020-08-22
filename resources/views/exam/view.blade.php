@@ -34,9 +34,8 @@
                                 <td>{{$data->question}}</td>
                                 <td>{{$data->points}}</td>
                                 <td>{{$data->questionCategory->category}}</td>
-                                <td><button type="button" class="btn btn-outline-success btn-sm" id="choicesView" data-id="{{$data->id}}">View Options</button></td>
+                                <td><button type="button" class="btn btn-outline-info btn-sm" id="choicesView" data-id="{{$data->id}}">View Options</button></td>
                                 <td>
-                                    <button type="button" class="btn btn-outline-info btn-sm" id="questionView" data-id="{{$data->id}}">view</button>
                                     <button type="button" class="btn btn-outline-secondary btn-sm" id="questionEdit" data-id="{{$data->id}}">Edit</button>
                                     <button type="button" class="btn btn-outline-danger btn-sm" id="questionDelete" data-id="{{$data->id}}">Delete</button>
                                 </td>
@@ -135,16 +134,24 @@
             </button>
           </div>
           <div class="modal-body">
-            <table class="table" style="display: none;">
-              <tbody>
+            <form id="optionForm" name="optionForm" novalidate="">
+            <table class="table" id="editOption" style="display: none;">
+              <tbody id="edit-option" name="edit-option">
                 <tr>
-                  <td scope="row"><input type="text" class="form-control" id="option" name="option" placeholder="Enter option" value=""></td>
-                  <td><label class="checkbox-inline"><input type="checkbox" value=""> Correct Answer</label></td>
-                  <td><button type="button" class="btn btn-outline-info btn-sm" id="SaveOption">Save</button></td>
+                  <input type="hidden" id="option_id" name="option_id" value="">
+                  <td scope="row">
+                    <input type="text" class="form-control" id="option" name="option" placeholder="Enter option" value="">
+                    <span class="invalid-feedback" role="alert" id="option-error">
+                        <strong id="option-error-message"></strong>
+                    </span>
+                  </td>
+                  <td><label class="checkbox-inline"><input type="checkbox" id="is_correct" name="is_correct"> Correct Answer</label></td>
+                  <td><button type="button" class="btn btn-outline-info btn-sm" id="UpdateOption">Update</button></td>
                   <th><button type="button" class="btn btn-outline-danger btn-sm" id="CancelOption">Cancel</button></th>
                 </tr>
               </tbody>
             </table>
+            </form>
             <table class="table">
               <thead>
                 <tr>
@@ -154,19 +161,8 @@
                   <th scope="col">Operation</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Jacob</td>
-                  <td>No</td>
-                  <td><button type="button" class="btn btn-outline-info btn-sm" id="EditOption">Edit</button></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Larry</td>
-                  <td>Yes</td>
-                  <td><button type="button" class="btn btn-outline-info btn-sm" id="EditOption">Edit</button></td>
-                </tr>
+              <tbody id="option-lists" name="option-lists">
+                
               </tbody>
             </table>
           </div>

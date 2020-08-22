@@ -39,7 +39,7 @@ jQuery(document).ready(function($){
                 var exam = '<tr id="exam' + data.id + '"><td scope="row">' + data.id + '</td><td>' + data.title + '</td>';
                 exam += '<td><button type="button" class="btn btn-outline-info btn-sm" id="examView" data-id="'+ data.id +'">view</button>';
                 exam += '<button type="button" class="btn btn-outline-secondary btn-sm" id="examEdit" data-id="'+ data.id +'">Edit</button>';
-                exam += '<button type="button" class="btn btn-outline-danger btn-sm" id="examDelete" data-id="'+ data.id +'">Delete</button></td>';
+                exam += '<button type="button" class="btn btn-outline-danger btn-sm" id="examDelete" data-id="'+ data.id +'">Delete</button></td></tr>';
                 if (state == "add") {
                     jQuery('#exam-lists').append(exam);
                 } else {
@@ -82,7 +82,7 @@ jQuery(document).ready(function($){
                 var exam = '<tr id="exam' + data.id + '"><td scope="row">' + data.id + '</td><td>' + data.title + '</td>';
                 exam += '<td><button type="button" class="btn btn-outline-info btn-sm" id="examView" data-id="'+ data.id +'">view</button>';
                 exam += '<button type="button" class="btn btn-outline-secondary btn-sm" id="examEdit" data-id="'+ data.id +'">Edit</button>';
-                exam += '<button type="button" class="btn btn-outline-danger btn-sm" id="examDelete" data-id="'+ data.id +'">Delete</button></td>';
+                exam += '<button type="button" class="btn btn-outline-danger btn-sm" id="examDelete" data-id="'+ data.id +'">Delete</button></td></tr>';
 
                 if (state == "add") {
                     jQuery('#exam-lists').append(exam);

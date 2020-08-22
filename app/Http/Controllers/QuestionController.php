@@ -19,26 +19,6 @@ class QuestionController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -67,16 +47,29 @@ class QuestionController extends Controller
         ]);
 
         Options::create([
-            'option' => 'Number 3',
+            'option' => 'Number three',
             'question_id' => $question->id
         ]);
 
         Options::create([
-            'option' => 'Number 4',
+            'option' => 'Number four',
             'question_id' => $question->id
         ]);
 
         return response()->json($question);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function questionOptions($id)
+    {
+        $question = Question::find($id);
+
+        return response()->json($question->options);
     }
 
     /**
@@ -90,17 +83,6 @@ class QuestionController extends Controller
         $question = Question::find($id);
 
         return response()->json($question);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
