@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class Options extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,14 +12,14 @@ class Exam extends Model
      * @var array
      */
     protected $fillable = [
-        'title'
+        'option', 'is_correct', 'question_id'
     ];
 
     /**
      * Relationship to Question
      */
-    public function questions()
+    public function question()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsTo(Question::class);
     }
 }

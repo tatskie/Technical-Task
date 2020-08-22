@@ -1,5 +1,5 @@
 jQuery(document).ready(function($){
-
+    
     //----- Open model CREATE -----//
     jQuery('#btn-add').click(function () {
         jQuery('#btn-save').val("add");
@@ -160,7 +160,7 @@ jQuery(document).ready(function($){
         ));
     });
 
-    // edit exam
+    // delete exam
     $(document).on( "click" ,"#examDelete", function() {
         console.log('Delete me' + $(this).data("id"));
         axios.get('/exam/'+$(this).data("id")).then(({data}) => (
@@ -168,6 +168,12 @@ jQuery(document).ready(function($){
             jQuery('#deleteExam').modal('show'),
             jQuery("#exam-delete").text("Are you sure you want to delete "+ data.title +"?")
         ));
+    });
+
+    // view exam
+    $(document).on( "click" ,"#examView", function() {
+        // console.log('Hit me');
+        window.location.href ="/exam/"+$(this).data("id")+"/edit";
     });
 
 });

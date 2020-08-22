@@ -21,7 +21,7 @@
                         <tr>
                           <th scope="col">ID</th>
                           <th scope="col">Exam Title</th>
-                          <th scope="col">operation</th>
+                          <th scope="col">Operation</th>
                         </tr>
                       </thead>
                       <tbody id="exam-lists" name="exam-lists">

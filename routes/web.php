@@ -22,6 +22,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/exam', 'ExamController');
+Route::resource('/questions', 'QuestionController');
 
 // Route::get('/exam', function () {
 // 	echo 'exam';

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exam;
-use App\QuestionCategory;
+use App\Options;
+use App\Question;
 use Illuminate\Http\Request;
 
-class ExamController extends Controller
+class QuestionController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,9 +25,7 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exam = Exam::all();
 
-        return view('exam.index', compact('exam'));
     }
 
     /**
@@ -49,12 +47,36 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-          'title'       => 'required|max:255',
+          'question' => 'required|max:255',
+          'points' => 'required|integer',
+          'category_id' => 'required|integer',
+          'exam_id' => 'required|integer',
         ]);
 
-        $exam = Exam::create($data);
-        
-        return response()->json($exam);
+        $question = Question::create($data);
+
+        Options::create([
+            'option' => 'Number one',
+            'is_correct' => true,
+            'question_id' => $question->id
+        ]);
+
+        Options::create([
+            'option' => 'Number two',
+            'question_id' => $question->id
+        ]);
+
+        Options::create([
+            'option' => 'Number 3',
+            'question_id' => $question->id
+        ]);
+
+        Options::create([
+            'option' => 'Number 4',
+            'question_id' => $question->id
+        ]);
+
+        return response()->json($question);
     }
 
     /**
@@ -65,9 +87,9 @@ class ExamController extends Controller
      */
     public function show($id)
     {
-        $exam = Exam::find($id);
+        $question = Question::find($id);
 
-        return response()->json($exam);
+        return response()->json($question);
     }
 
     /**
@@ -78,11 +100,7 @@ class ExamController extends Controller
      */
     public function edit($id)
     {
-        $exam = Exam::find($id);
-
-        $categories = QuestionCategory::all();
-
-        return view('exam.view', compact(['exam', 'categories']));
+        //
     }
 
     /**
@@ -94,18 +112,21 @@ class ExamController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $data = $request->validate([
-          'title'       => 'required|max:255',
+          'question' => 'required|max:255',
+          'points' => 'required|integer',
+          'category_id' => 'required|integer',
         ]);
 
-        $exam = Exam::find($id);
+        $question = Question::find($id);
 
-        $exam->title = $request->get('title');
+        $question->question = $request->get('question');
+        $question->points = $request->get('points');
+        $question->category_id = $request->get('category_id');
 
-        $exam->save();
+        $question->save();
 
-        return response()->json($exam);
+        return response()->json($question);
     }
 
     /**
@@ -116,8 +137,8 @@ class ExamController extends Controller
      */
     public function destroy($id)
     {
-         $exam = Exam::find($id)->delete();
+        $question = Question::find($id)->delete();
 
-        return response()->json(['success'=>'Exam Deleted successfully']);
+        return response()->json(['success'=>'Question Deleted successfully']);
     }
 }

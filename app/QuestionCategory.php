@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Exam extends Model
+class QuestionCategory extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class Exam extends Model
      * @var array
      */
     protected $fillable = [
-        'title'
+        'category'
     ];
 
     /**
@@ -20,6 +20,7 @@ class Exam extends Model
      */
     public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Question::class, 'cateogry_id');
     }
+
 }
